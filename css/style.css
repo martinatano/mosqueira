@@ -13,3 +13,72 @@
 .dropdown-submenu:hover .dropdown-menu {
     display: block;
 }
+
+.navbar-nav .nav-item {
+    margin-right: 30px;
+}
+
+.navbar-brand{
+    padding: 20px;
+    margin-right: 100px;
+}
+
+.accordion{
+    padding: 40px;
+}
+
+.titulo {
+    font-size: 3rem; /* Aumenta el tamaño */
+    font-weight: bold; /* Negrita */
+    color: #002E86; /* Azul oscuro */
+    text-align: center; /* Centrar */
+    padding: 20px; /* Espaciado */
+}
+
+.btn-custom:hover {
+    background-color: #001B5E ; 
+    border-color: #001B5E ;
+    color: white;
+}
+.card {
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+    text-align: center; /* Centrar contenido */
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #002E86;
+}
+
+.card-subtitle {
+    font-size: 1rem;
+    color: #555;
+}
+
+.btn-custom {
+    background-color: white;
+    color: #002E86;
+    border: 2px solid #002E86; /* Agregado borde azul */
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.btn-custom:hover {
+    background-color: #002E86;
+    color: white;
+    transform: scale(1.1);
+}
