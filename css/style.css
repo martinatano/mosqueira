@@ -82,3 +82,24 @@
     color: white;
     transform: scale(1.1);
 }
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.benefits-list li {
+    font-size: 1rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.benefits-list li i {
+    color: #002E86;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
