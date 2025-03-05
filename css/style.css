@@ -115,3 +115,20 @@
     left: 0;
     background-color: darkorange;
 }
+.seguro-item img {
+    width: 150px; /* Ajustá según el tamaño deseado */
+    height: 150px;
+    object-fit: cover;
+    border: 3px solid #007bff; /* Color del borde */
+    padding: 5px;
+}
+
+.seguro-item p {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+
+.list-inline-item a:hover {
+    color: #007bff;
+}
