@@ -36,8 +36,8 @@
 }
 
 .btn-custom:hover {
-    background-color: #001B5E ; 
-    border-color: #001B5E ;
+    background-color: darkorange ; 
+    border-color: darkorange ;
     color: white;
 }
 .card {
@@ -68,8 +68,8 @@
 
 .btn-custom {
     background-color: white;
-    color: #002E86;
-    border: 2px solid #002E86; /* Agregado borde azul */
+    color: darkorange;
+    border: 2px solid darkorange; /* Agregado borde azul */
     padding: 10px 20px;
     border-radius: 8px;
     font-size: 1.1rem;
@@ -78,7 +78,7 @@
 }
 
 .btn-custom:hover {
-    background-color: #002E86;
+    background-color: darkorange;
     color: white;
     transform: scale(1.1);
 }
@@ -102,4 +102,16 @@
     color: #002E86;
     margin-right: 10px;
     font-size: 1.2rem;
+}
+
+.custom-border {
+    border: 2px solid lightgray; /* Ajusta el grosor del borde según sea necesario */
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.5); /* Sombra naranja */
+}
+
+.badge-custom {
+    transform: rotate(-45deg) translate(-30%, -30%);
+    top: 0;
+    left: 0;
+    background-color: darkorange;
 }
