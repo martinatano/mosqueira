@@ -12,7 +12,9 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Logo</a>
+        <a class="navbar-brand" href="../index.html">
+            <img src="../images/logo_transparente.png" alt="" style="height: 100px; width: 100px;">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -84,15 +86,13 @@
                     <h5 class="card-title text-center text-custom">Todo riesgo</h5>
                     <hr>
                     <ul class="benefits-list">
-                        <li><i class="fas fa-car-crash"></i> Responsabilidad Civil</li>
-                        <li><i class="fas fa-user-shield"></i> Pérdida total y parcial por Robo</li>
-                        <li><i class="fas fa-fire"></i> Pérdida total y parcial por Incendio</li>
-                        <li><i class="fas fa-bolt"></i> Destrucción total por Accidente</li>
+                        <li><i class="fas fa-car-crash"></i> Daño parcial por accidente</li>
+                        <li><i class="fas fa-user-shield"></i> Planes con diferentes franquicias que se adaptan a cada necesidad</li>
+                        <li><i class="fas fa-fire"></i> Todo riesgo garantizado con red de talleres propios </li>
                     </ul>
-                    <br>
-                    <br>
+                    <br><br>
                     <div class="text-center">
-                        <button type="button" class="btn btn-custom">Cotizar</button>
+                        <button type="button" class="btn btn-custom" onclick="cotizarSeguro('Todo riesgo')">Cotizar</button>
                     </div>
                 </div>
             </div>
@@ -101,18 +101,17 @@
             <div class="card position-relative" style="width: 22rem;">
                 <div class="card-body">
                     <span class="badge text-dark position-absolute badge-custom">Más Elegido</span>
-                    <h5 class="card-title text-center text-custom">Terceros completo</h5>
+                    <h5 class="card-title text-center text-custom">Terceros completos</h5>
                     <hr>
                     <ul class="benefits-list">
-                        <li><i class="fas fa-car-crash"></i> Responsabilidad Civil</li>
+                        <li><i class="fas fa-car-crash"></i> Responsabilidad Civil Obligatoria</li>
                         <li><i class="fas fa-user-shield"></i> Pérdida total por Robo</li>
                         <li><i class="fas fa-fire"></i> Pérdida total por Incendio</li>
-                        <li><i class="fas fa-bolt"></i> Daños parciales cubiertos</li>
+                        <li><i class="fas fa-bolt"></i> Daño total por Accidente</li>
                     </ul>
-                    <br>
-                    <br>
+                    <br><br>
                     <div class="text-center">
-                        <button type="button" class="btn btn-custom">Cotizar</button>
+                        <button type="button" class="btn btn-custom" onclick="cotizarSeguro('Terceros completos')">Cotizar</button>
                     </div>
                 </div>
             </div>
@@ -128,10 +127,9 @@
                         <li><i class="fas fa-fire"></i> No cubre daños propios</li>
                         <li><i class="fas fa-bolt"></i> Cumple requisitos legales</li>
                     </ul>
-                    <br>
-                    <br>
+                    <br><br>
                     <div class="text-center">
-                        <button type="button" class="btn btn-custom">Cotizar</button>
+                        <button type="button" class="btn btn-custom" onclick="cotizarSeguro('Responsabilidad civil')">Cotizar</button>
                     </div>
                 </div>
             </div>
@@ -142,59 +140,34 @@
 <br>
 <footer class="bg-body-tertiary pt-4 mt-4">
     <div class="container">
-        <div class="row">
+        <div class="row d-flex justify-content-between">
             <!-- Contacto -->
-            <div class="col-md-4 d-flex justify-content-start">
+            <div class="col-md-4">
                 <div>
-                    <h5>Contacto</h5>
+                    <h5 class="fs-6">Contacto</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt"></i> Calle Falsa 123, Ciudad</li>
-                        <li><i class="fas fa-phone"></i> +123 456 7890</li>
-                        <li><i class="fas fa-envelope"></i> info@aseguradora.com</li>
+                        <li class="fs-6"><i class="fas fa-map-marker-alt"></i> Hipólito Yrigoyen 2524</li>
+                        <li class="fs-6"><i class="fas fa-phone"></i> +54 1138523400</li>
+                        <li class="fs-6"><i class="fas fa-envelope"></i> mosqueiraseguros@gmail.com</li>
                     </ul>
                 </div>
             </div>
 
              <!-- Horarios -->
-             <div class="col-md-4 d-flex justify-content-center">
+             <div class="col-md-4">
                 <div>
-                    <h5>Horarios de Atención</h5>
+                    <h5 class="fs-6">Horarios de Atención</h5>
                     <ul class="list-unstyled">
-                        <li><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
-                        <li><i class="fas fa-clock"></i> Sábados: 9:00 - 13:00</li>
-                        <li><i class="fas fa-clock"></i> Domingos: Cerrado</li>
-                    </ul>
+                        <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
                 </div>
             </div>
-
-            <!-- Redes Sociales -->
-            <div class="col-md-4 d-flex justify-content-end">
-                <div>
-                    <h5>Seguinos</h5>
-                    <ul class="list-inline">
-                        <li class="list-inline-item">
-                            <a href="#" class="text-dark"><i class="fab fa-facebook fa-lg"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="text-dark"><i class="fab fa-instagram fa-lg"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="text-dark"><i class="fab fa-twitter fa-lg"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="text-dark"><i class="fab fa-linkedin fa-lg"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
         </div>
     </div>
 
     <!-- Derechos reservados -->
     <div class="row mt-3">
         <div class="col text-center">
-            <p>&copy; 2025 Aseguradora. Todos los derechos reservados. 
+            <p>&copy; 2025 Mosqueira Seguros. Todos los derechos reservados. 
                 <a href="politica-privacidad.html">Política de Privacidad</a> | 
                 <a href="terminos.html">Términos y Condiciones</a>
             </p>
