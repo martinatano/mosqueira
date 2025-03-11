@@ -132,3 +132,11 @@
 .list-inline-item a:hover {
     color: #007bff;
 }
+
+#nosotros .card {
+    background-color: #f8f9fa; /* Fondo suave */
+    border-radius: 15px; /* Bordes redondeados */
+}
+#nosotros h2 {
+    color: #0056b3; /* Color destacado */
+}

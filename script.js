@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function cotizarSeguro(tipoSeguro) {
-    let telefono = "549XXXXXXXXXX"; 
+    let telefono = "5491138523400"; 
     let mensaje = `Hola! Quería contratar el seguro ${tipoSeguro} para mi vehículo.`;
     let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, '_blank');
