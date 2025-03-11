@@ -140,3 +140,19 @@
 #nosotros h2 {
     color: #0056b3; /* Color destacado */
 }
+
+#seguro-hogar .card {
+    border-radius: 15px;
+    transition: transform 0.3s ease-in-out;
+}
+#seguro-hogar .card:hover {
+    transform: scale(1.05);
+}
+
+#seguro-hogar .shadow-sm {
+    transition: transform 0.2s ease-in-out;
+}
+#seguro-hogar .shadow-sm:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
