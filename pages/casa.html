@@ -57,12 +57,30 @@
 </nav>
 
 <section id="seguro-hogar" class="container my-5">
-    <h2 class="text-center mb-4 fw-bold">Contratá tu seguro de Hogar</h2>
-    <div class="d-flex justify-content-center gap-4 flex-wrap">
+    <div class="container mt-4 mb-10" >
+        <div class="row align-items-center bg-light p-4 rounded custom-border">
+            <!-- Texto e ícono -->
+            <div class="col-md-6 text-center">
+                <div class="d-flex align-items-center justify-content-center mb-3">
+                    <h1 class="h1 fw-bold text-dark mb-0">Contratá tu Seguro de Hogar</h1>
+                </div>
+            </div>
+    
+            <!-- Imagen -->
+            <div class="col-md-6 d-flex justify-content-center">
+                <img src="../images/hogar.webp" alt="Auto" class="img-fluid rounded-3 shadow-lg" style="max-width: 450px;">
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <!-- Contenedor de las Cards -->
+    <div class="d-grid gap-4" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); max-width: 1000px; margin: auto;">
+
         <!-- Card 1 -->
-        <div class="card shadow-lg p-4 text-center" style="width: 45%;">
+        <div class="card shadow-lg p-4 text-center" style="border-radius: 20px; transition: transform 0.3s;">
             <div class="card-body">
-                <h4 class="card-title  fw-bold" style="color: #002E86">🏠 Principales Coberturas</h4>
+                <h4 class="card-title fw-bold" style="color: #002E86">🏠 Principales Coberturas</h4>
                 <ul class="text-start">
                     <li>Incendio edificio y contenido</li>
                     <li>Responsabilidad civil</li>
@@ -72,19 +90,20 @@
                     <li>Seguro técnico</li>
                     <li>Electrodomésticos</li>
                 </ul>
-                <a href="#" class="btn btn-primary">Más Información</a>
+                <button type="button" class="btn btn-custom" onclick="cotizarSeguro('Hogar')">Cotizar</button>
             </div>
         </div>
 
         <!-- Card 2 -->
-        <div class="card shadow-lg p-4 text-center" style="width: 45%;">
+        <div class="card shadow-lg p-4 text-center" style="border-radius: 20px;transition: transform 0.3s;">
             <div class="card-body">
                 <h4 class="card-title fw-bold" style="color:#002E86">🔧 Asistencia al Hogar</h4>
                 <p>Solución de urgencias las 24 hs, todos los días. Personal calificado en cerrajería, electricidad, gas, plomería y cristalería.</p>
-                <br><br><br><br><br>
-                <a href="#" class="btn btn-primary">Más Información</a>
+                <br><br><br><br>
+                <button type="button" class="btn btn-custom" onclick="cotizarSeguro('Asistencia al hogar')">Cotizar</button>
             </div>
         </div>
+
     </div>
 </section>
 
@@ -92,7 +111,7 @@
 
 <footer class="bg-body-tertiary pt-4 mt-4">
     <div class="container">
-        <div class="row d-flex justify-content-between">
+        <div class="row d-flex justify-content-between align-items-center">
             <!-- Contacto -->
             <div class="col-md-4">
                 <div>
@@ -105,24 +124,36 @@
                 </div>
             </div>
 
-             <!-- Horarios -->
-             <div class="col-md-4">
+            <!-- Logos -->
+            <div class="col-md-4 d-flex justify-content-center">
+                <div>
+                    <img src="../images/digna-logo-naranja-1.png" alt="" style="width:55px; height: 50px; margin: 0 5px;">
+                    <img src="../images/images-removebg-preview.png" alt="" style="width:90px; height: 50px; margin: 0 5px;">
+                    <img src="../images/librava-removebg-preview.png" alt="" style="width:60px; height: 50px; margin: 0 5px;">
+                    <img src="../images/provinicia_seguros-removebg-preview.png" alt="" style="width:50px; height: 50px; margin: 0 5px;">
+                    <img src="../images/unnamed.png" alt="" style="width:90px; height: 50px; margin: 0 5px;">
+                </div>
+            </div>
+
+            <!-- Horarios -->
+            <div class="col-md-4 d-flex justify-content-end">
                 <div>
                     <h5 class="fs-6">Horarios de Atención</h5>
                     <ul class="list-unstyled">
                         <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
+                        <li class="fs-6"><i class="fas fa-clock"></i> Sábados: 9:00 - 13:00</li>
+                        <li class="fs-6"><i class="fas fa-clock"></i> Domingos: Cerrado</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Derechos reservados -->
-    <div class="row mt-3">
-        <div class="col text-center">
-            <p>&copy; 2025 Mosqueira Seguros. Todos los derechos reservados. 
-                <a href="politica-privacidad.html">Política de Privacidad</a> | 
-                <a href="terminos.html">Términos y Condiciones</a>
-            </p>
+        <div class="row mt-3">
+            <div class="col text-center">
+                <p class="fs-6">&copy; 2025 Aseguradora. Todos los derechos reservados. 
+                    <a href="politica-privacidad.html">Política de Privacidad</a> | 
+                    <a href="terminos.html">Términos y Condiciones</a>
+                </p>
+            </div>
         </div>
     </div>
 </footer>
