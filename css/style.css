@@ -14,6 +14,20 @@
     display: block;
 }
 
+.btn-index {
+    background-color: #002E86; /* Azul del texto */
+    color: #fff; /* Texto blanco */
+    border: none; /* Sin borde */
+    padding: 10px 20px;
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+}
+
+.btn-index:hover {
+    background-color: #0056b3; /* Azul más claro al pasar el cursor */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+    color: #fff; /* Mantener el texto blanco */
+}
 
 .navbar-nav .nav-item {
     margin-right: 30px;
@@ -26,6 +40,10 @@
 
 .accordion{
     padding: 40px;
+}
+
+.text-blue {
+    color: #002E86;
 }
 
 .titulo {
@@ -137,6 +155,8 @@
 #nosotros .card {
     background-color: #f8f9fa; /* Fondo suave */
     border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(255, 165, 0, 0.5); /* Sombra naranja */
+
 }
 #nosotros h2 {
     color: #0056b3; /* Color destacado */
@@ -162,3 +182,38 @@
     transform: translateY(-5px);
 }
 
+.custom-accordion{
+    width: 80%;
+}
+
+.shadow-orange {
+    box-shadow: 0 8px 30px rgba(255, 165, 0, 0.5); /* Sombra naranja */
+}
+
+.shadow-orange:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(255, 165, 0, 0.5);
+}
+
+.seguro-hover {
+    transition: transform 0.3s ease-in-out;
+}
+
+.seguro-hover:hover {
+    transform: scale(1.1);
+}
+
+.map-responsive {
+    overflow: hidden;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    position: relative;
+    height: 0;
+}
+
+.map-responsive iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
