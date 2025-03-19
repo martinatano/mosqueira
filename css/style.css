@@ -2,12 +2,19 @@
     position: relative;
 }
 
+.dropdown-menu {
+    overflow: visible !important;
+}
+
+
 .dropdown-submenu .dropdown-menu {
     top: 0;
     left: 100%;
     margin-top: 0;
     display: none;
     position: absolute;
+    z-index: 1050 !important;
+
 }
 
 .dropdown-submenu:hover .dropdown-menu {
@@ -216,4 +223,96 @@
     height: 100%;
     width: 100%;
     position: absolute;
+}
+
+.seguro-salud {
+    padding: 50px 0;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+.card-salud {
+    max-width: 600px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card-salud h2 {
+    color: #007bff;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.card-salud p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.beneficios p {
+    font-weight: bold;
+}
+
+.footer-logo {
+    width: 60px;
+    height: 50px;
+    margin: 5px;
+}
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px; /* Ajusta el tamaño según prefieras */
+    z-index: 1000; /* Para que esté por encima de otros elementos */
+}
+
+.whatsapp-float img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.whatsapp-float:hover img {
+    transform: scale(1.1); /* Efecto de agrandado al pasar el mouse */
+}
+
+
+@media (max-width: 576px) {  /* Ajustes para celulares */
+    .footer-logo {
+        width: 50px;
+        height: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dropdown-submenu .dropdown-menu {
+        left: auto;
+        right: 40%;
+    }
+
+    footer .row {
+        display: flex;
+        flex-direction: column; /* Apila los elementos */
+        align-items: center; /* Centra los elementos */
+        text-align: center; /* Asegura que el texto también esté centrado */
+    }
+
+    footer .col-12, 
+    footer .col-md-4 {
+        width: 100%; /* Ocupa todo el ancho */
+        text-align: center; /* Asegura que el texto también esté centrado */
+        align-items: center; /* Centra los elementos */
+        flex-direction: column; /* Apila los elementos */
+
+    }
+}
+
+
+@media (max-width: 768px) {
+    .accordion {
+       padding:0px;
+    }
 }

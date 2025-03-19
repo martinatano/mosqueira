@@ -11,9 +11,9 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-lightblue" >
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="../images/logo_transparente.png" alt="" style="height: 100px; width: 100px;">
-        </a>
+        <a class="navbar-brand " href="index.html">
+            <img src="../images/logo_transparente.png" alt="" style="height: 80px; width: 80px;">
+        </a>        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -59,16 +59,17 @@
 <section class="container text-center mt-5">
     <div class="row align-items-center">
         <!-- Texto -->
-        <div class="col-md-6 text-md-start">
+        <div class="col-md-6 text-md-start order-2 order-md-1 mt-4 mt-md-0">
             <h1 class="fw-bold text-blue">Cuidamos lo que más importa, siempre.</h1>
             <p class="fs-5 text-secondary text-blue">Seguros simples, rápidos y sin complicaciones</p>
-            <button type="button" class="btn btn-index" onclick="cotizarIndex('Hola! Como estan? quería asesoramiento para contratar un seguro.')">Cotizar</button>
+            <button type="button" class="btn btn-index">Cotizar</button>
         </div>
         <!-- Imagen -->
-        <div class="col-md-6">
-            <img src="images/inicio2.jpg" class="img-fluid shadow-orange rounded-3" alt="Seguro digital">
-        </div>
+        <div class="col-md-6 order-md-2 order-1">
+            <img src="images/inicio2.jpg" class="img-fluid shadow-orange rounded-3 w-100 w-sm-75 w-xs-50" alt="Seguro digital">
+        </div>        
     </div>
+    
     <br>
     <br>
 </section>
@@ -132,42 +133,38 @@
 
 <footer class="bg-body-tertiary pt-4 mt-4">
     <div class="container">
-        <div class="row d-flex justify-content-between align-items-center">
+        <div class="row d-flex justify-content-center text-center text-md-start">
             <!-- Contacto -->
-            <div class="col-md-4">
-                <div>
-                    <h5 class="fs-6">Contacto</h5>
-                    <ul class="list-unstyled">
-                        <li class="fs-6"><i class="fas fa-map-marker-alt"></i> Hipólito Yrigoyen 2524, José C. Paz</li>
-                        <li class="fs-6"><i class="fas fa-phone"></i> +54 1138523400</li>
-                        <li class="fs-6"><i class="fas fa-envelope"></i> mosqueiraseguros@gmail.com</li>
-                    </ul>
-                </div>
+            <div class="col-12 col-md-4 mb-3 mb-md-0">
+                <h5 class="fs-6">Contacto</h5>
+                <ul class="list-unstyled">
+                    <li class="fs-6"><i class="fas fa-map-marker-alt"></i> Hipólito Yrigoyen 2524, José C. Paz</li>
+                    <li class="fs-6"><i class="fas fa-phone"></i> +54 1138523400</li>
+                    <li class="fs-6"><i class="fas fa-envelope"></i> mosqueiraseguros@gmail.com</li>
+                </ul>
             </div>
 
             <!-- Logos -->
-            <div class="col-md-4 d-flex justify-content-center">
-                <div>
-                    <img src="images/digna-logo-naranja-1.png" alt="" style="width:55px; height: 50px; margin: 0 5px;">
-                    <img src="images/images-removebg-preview.png" alt="" style="width:90px; height: 50px; margin: 0 5px;">
-                    <img src="images/librava-removebg-preview.png" alt="" style="width:60px; height: 50px; margin: 0 5px;">
-                    <img src="images/provinicia_seguros-removebg-preview.png" alt="" style="width:50px; height: 50px; margin: 0 5px;">
-                    <img src="images/unnamed.png" alt="" style="width:90px; height: 50px; margin: 0 5px;">
+            <div class="col-12 col-md-4 d-flex justify-content-center align-items-center mb-3 mb-md-0">
+                <div class="d-flex flex-wrap justify-content-center gap-2">
+                    <img src="images/digna-logo-naranja-1.png" alt="" class="footer-logo">
+                    <img src="images/images-removebg-preview.png" alt="" class="footer-logo">
+                    <img src="images/librava-removebg-preview.png" alt="" class="footer-logo">
+                    <img src="images/provinicia_seguros-removebg-preview.png" alt="" class="footer-logo">
+                    <img src="images/unnamed.png" alt="" class="footer-logo">
                 </div>
             </div>
 
             <!-- Horarios -->
-            <div class="col-md-4 d-flex justify-content-end">
-                <div>
-                    <h5 class="fs-6">Horarios de Atención</h5>
-                    <ul class="list-unstyled">
-                        <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
-                        <li class="fs-6"><i class="fas fa-clock"></i> Sábados: 9:00 - 13:00</li>
-                        <li class="fs-6"><i class="fas fa-clock"></i> Domingos: Cerrado</li>
-                    </ul>
-                </div>
+            <div class="col-12 col-md-4">
+                <h5 class="fs-6">Horarios de Atención</h5>
+                <ul class="list-unstyled">
+                    <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
+                    <li class="fs-6"><i class="fas fa-clock"></i> Sábados y domingos: Cerrado</li>
+                </ul>
             </div>
         </div>
+
         <div class="row mt-3">
             <div class="col text-center">
                 <p class="fs-6">&copy; 2025 Aseguradora. Todos los derechos reservados. 
@@ -177,6 +174,10 @@
             </div>
         </div>
     </div>
+    <a href="https://wa.me/541138523400" class="whatsapp-float" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="60">
+    </a>
+    
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
