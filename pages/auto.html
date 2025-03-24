@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,185 +9,207 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Aseguradora</title>
 </head>
+
 <body>
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        <a class="navbar-brand " href="../index.html">
-            <img src="../images/logo_transparente.png" alt="" style="height: 80px; width: 80px;">
-        </a>        
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="../index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../pages/nosotros.html">Nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../pages/contacto.html">Contacto</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Productos
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Automotor</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../pages/auto.html">Auto</a></li>
-                                <li><a class="dropdown-item" href="../pages/moto.html">Moto</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Riesgos varios</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="../pages/casa.html">Casa</a></li>
-                                <li><a class="dropdown-item" href="../pages/salud.html">Salud</a></li>
-                                <li><a class="dropdown-item" href="../pages/accpersonales.html">Accidentes Personales</a></li>
-                                <li><a class="dropdown-item" href="../pages/respcivil.html">Responsabilidad Civil</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<section class="container my-5">
-    <div class="container mt-4 mb-10">
-        <div class="row align-items-center bg-light p-4 rounded custom-border">
-            <!-- Texto e ícono -->
-        <div class="col-md-6 text-center">
-            <div class="d-flex align-items-center justify-content-center mb-3">
-                <img src="../images/pngwing.com.png" alt="Ícono auto" class="me-3" style="width: 60px; height: 60px;">
-                <h1 class="h1 fw-bold text-dark mb-0">Contratá tu Seguro de Auto</h1>
-            </div>
-            <p class="text-secondary text-center">Cotizá rápido y fácil contactandonos.</p>
-        </div>
-
-        <!-- Imagen -->
-        <div class="col-md-6 d-flex justify-content-center">
-            <img src="../images/auto.jpg" alt="Auto" class="img-fluid rounded-3 shadow-lg" style="max-width: 450px;">
-        </div>
-    </div>
-</div>
-
-<br>
-<!-- cards -->
-<div class="container">
-    <div class="row justify-content-center g-5">
-        <div class="col-auto">
-            <div class="card" style="width: 22rem;">
-                <div class="card-body">
-                    <h5 class="card-title text-center text-custom">Todo riesgo</h5>
-                    <hr>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-car-crash"></i> Daño parcial por accidente</li>
-                        <li><i class="fas fa-user-shield"></i> Planes con diferentes franquicias que se adaptan a cada necesidad</li>
-                        <li><i class="fas fa-fire"></i> Todo riesgo garantizado con red de talleres propios </li>
-                    </ul>
-                    <br><br>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-custom" onclick="cotizarSeguro('Todo riesgo para mi auto.')">Cotizar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-auto">
-            <div class="card position-relative" style="width: 22rem;">
-                <div class="card-body">
-                    <span class="badge text-dark position-absolute badge-custom">Más Elegido</span>
-                    <h5 class="card-title text-center text-custom">Terceros completos</h5>
-                    <hr>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-car-crash"></i> Responsabilidad Civil Obligatoria</li>
-                        <li><i class="fas fa-user-shield"></i> Pérdida total por Robo</li>
-                        <li><i class="fas fa-fire"></i> Pérdida total por Incendio</li>
-                        <li><i class="fas fa-bolt"></i> Daño total por Accidente</li>
-                    </ul>
-                    <br><br>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-custom" onclick="cotizarSeguro('Terceros completos para mi auto.')">Cotizar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-auto">
-            <div class="card" style="width: 22rem;">
-                <div class="card-body">
-                    <h5 class="card-title text-center text-custom">Responsabilidad civil</h5>
-                    <hr>
-                    <ul class="benefits-list">
-                        <li><i class="fas fa-car-crash"></i> Responsabilidad Civil obligatoria</li>
-                        <li><i class="fas fa-user-shield"></i> Cobertura mínima</li>
-                        <li><i class="fas fa-fire"></i> No cubre daños propios</li>
-                        <li><i class="fas fa-bolt"></i> Cumple requisitos legales</li>
-                    </ul>
-                    <br><br>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-custom" onclick="cotizarSeguro('Responsabilidad civil para mi auto.')">Cotizar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<br>
-<br>
-<footer class="bg-body-tertiary pt-4 mt-4">
-    <div class="container">
-        <div class="row d-flex justify-content-center text-center text-md-start">
-            <!-- Contacto -->
-            <div class="col-12 col-md-4 mb-3 mb-md-0">
-                <h5 class="fs-6">Contacto</h5>
-                <ul class="list-unstyled">
-                    <li class="fs-6"><i class="fas fa-map-marker-alt"></i> Hipólito Yrigoyen 2524, José C. Paz</li>
-                    <li class="fs-6"><i class="fas fa-phone"></i> +54 1138523400</li>
-                    <li class="fs-6"><i class="fas fa-envelope"></i> mosqueiraseguros@gmail.com</li>
-                </ul>
-            </div>
-
-            <!-- Logos -->
-            <div class="col-12 col-md-4 d-flex justify-content-center align-items-center mb-3 mb-md-0">
-                <div class="d-flex flex-wrap justify-content-center gap-2">
-                    <img src="../images/digna-logo-naranja-1.png" alt="" class="footer-logo">
-                    <img src="../images/images-removebg-preview.png" alt="" class="footer-logo">
-                    <img src="../images/librava-removebg-preview.png" alt="" class="footer-logo">
-                    <img src="../images/provinicia_seguros-removebg-preview.png" alt="" class="footer-logo">
-                    <img src="../images/unnamed.png" alt="" class="footer-logo">
-                </div>
-            </div>
-
-            <!-- Horarios -->
-            <div class="col-12 col-md-4">
-                <h5 class="fs-6">Horarios de Atención</h5>
-                <ul class="list-unstyled">
-                    <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
-                    <li class="fs-6"><i class="fas fa-clock"></i> Sábados y domingos: Cerrado</li>
+    <nav class="navbar navbar-expand-lg navbar-grey">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../index.html">
+                <img src="../images/logo_transparente.png" alt="Logo" class="logo-responsive">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pages/contacto.html">Contacto</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Productos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="">Automotor</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../pages/auto.html">Auto</a></li>
+                                    <li><a class="dropdown-item" href="../pages/moto.html">Moto</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle" href="#">Riesgos varios</a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="../pages/casa.html">Casa</a></li>
+                                    <li><a class="dropdown-item" href="../pages/salud.html">Salud</a></li>
+                                    <li><a class="dropdown-item" href="../pages/accpersonales.html">Accidentes
+                                            Personales</a></li>
+                                    <li><a class="dropdown-item" href="../pages/respcivil.html">Responsabilidad
+                                            Civil</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
+    </nav>
 
-        <div class="row mt-3">
-            <div class="col text-center">
-                <p class="fs-6">&copy; 2025 Aseguradora. Todos los derechos reservados. 
-                    <a href="politica-privacidad.html">Política de Privacidad</a> | 
-                    <a href="terminos.html">Términos y Condiciones</a>
-                </p>
+    <section class="container my-5">
+        <div class="container mt-4 mb-10">
+            <div class="row align-items-center bg-light p-4 rounded custom-border">
+                <!-- Texto e ícono -->
+                <div class="col-md-6 text-center">
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <img src="../images/pngwing.com.png" alt="Ícono auto" class="me-3"
+                            style="width: 60px; height: 60px;">
+                        <h1 class="h1 fw-bold text-dark mb-0 responsive-heading">Contratá tu Seguro de Auto</h1>
+                    </div>
+                    <p class="text-secondary text-center responsive-paragraph">Cotizá rápido y fácil contactandonos.</p>
+                </div>
+
+                <!-- Imagen -->
+                <div class="col-md-6 d-flex justify-content-center">
+                    <img src="../images/auto.jpg" alt="Auto" class="img-fluid rounded-3 shadow-lg responsive-image"
+                        style="max-width: 450px;">
+                </div>
+            </div>
+
+            <br>
+            <!-- cards -->
+            <div class="container">
+                <div class="row justify-content-center g-5">
+                    <div class="col-auto">
+                        <div class="card" style="width: 22rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-custom">Todo riesgo</h5>
+                                <hr>
+                                <ul class="benefits-list">
+                                    <li><i class="fas fa-car-crash"></i> Daño parcial por accidente</li>
+                                    <li><i class="fas fa-user-shield"></i> Planes con diferentes franquicias que se
+                                        adaptan a cada necesidad</li>
+                                    <li><i class="fas fa-fire"></i> Todo riesgo garantizado con red de talleres propios
+                                    </li>
+                                </ul>
+                                <br><br>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-custom"
+                                        onclick="cotizarSeguro('Todo riesgo para mi auto.')">Cotizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="card position-relative" style="width: 22rem;">
+                            <div class="card-body">
+                                <span class="badge text-dark position-absolute badge-custom">Más Elegido</span>
+                                <h5 class="card-title text-center text-custom">Terceros completos</h5>
+                                <hr>
+                                <ul class="benefits-list">
+                                    <li><i class="fas fa-car-crash"></i> Responsabilidad Civil Obligatoria</li>
+                                    <li><i class="fas fa-user-shield"></i> Pérdida total por Robo</li>
+                                    <li><i class="fas fa-fire"></i> Pérdida total por Incendio</li>
+                                    <li><i class="fas fa-bolt"></i> Daño total por Accidente</li>
+                                </ul>
+                                <br><br>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-custom"
+                                        onclick="cotizarSeguro('Terceros completos para mi auto.')">Cotizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="card" style="width: 22rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center text-custom">Responsabilidad civil</h5>
+                                <hr>
+                                <ul class="benefits-list">
+                                    <li><i class="fas fa-car-crash"></i> Responsabilidad Civil obligatoria</li>
+                                    <li><i class="fas fa-user-shield"></i> Cobertura mínima</li>
+                                    <li><i class="fas fa-fire"></i> No cubre daños propios</li>
+                                    <li><i class="fas fa-bolt"></i> Cumple requisitos legales</li>
+                                </ul>
+                                <br><br>
+                                <div class="text-center">
+                                    <button type="button" class="btn btn-custom"
+                                        onclick="cotizarSeguro('Responsabilidad civil para mi auto.')">Cotizar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
+    </section>
+
+    <br>
+    <br>
+    <footer class="bg-body-tertiary pt-4 mt-4">
+        <div class="container">
+            <div class="row d-flex justify-content-between align-items-center">
+                <!-- Contacto -->
+                <div class="col-md-4">
+                    <div>
+                        <h5 class="fs-6">Contacto</h5>
+                        <ul class="list-unstyled">
+                            <li class="fs-6"><i class="fas fa-map-marker-alt"></i> Hipólito Yrigoyen 2524, José
+                                C. Paz</li>
+                            <li class="fs-6"><i class="fas fa-phone"></i> +54 1138523400</li>
+                            <li class="fs-6"><i class="fas fa-envelope"></i> mosqueiraseguros@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Logos -->
+                <div class="col-md-4 d-flex justify-content-center">
+                    <div>
+                        <img src="../images/digna-logo-naranja-1.png" alt=""
+                            style="width:55px; height: 50px; margin: 0 5px;">
+                        <img src="../images/images-removebg-preview.png" alt=""
+                            style="width:90px; height: 50px; margin: 0 5px;">
+                        <img src="../images/librava-removebg-preview.png" alt=""
+                            style="width:60px; height: 50px; margin: 0 5px;">
+                        <img src="../images/provinicia_seguros-removebg-preview.png" alt=""
+                            style="width:50px; height: 50px; margin: 0 5px;">
+                        <img src="../images/unnamed.png" alt="" style="width:90px; height: 50px; margin: 0 5px;">
+                    </div>
+                </div>
+
+                <!-- Horarios -->
+                <div class="col-md-4 d-flex justify-content-end">
+                    <div>
+                        <h5 class="fs-6">Horarios de Atención</h5>
+                        <ul class="list-unstyled">
+                            <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
+                            <li class="fs-6"><i class="fas fa-clock"></i> Sábados y domingos: Cerrado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <p class="fs-6">&copy; 2025 Aseguradora. Todos los derechos reservados.
+                        <a href="politica-privacidad.html">Política de Privacidad</a> |
+                        <a href="terminos.html">Términos y Condiciones</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../script.js"></script>
 
 </body>
+
 </html>

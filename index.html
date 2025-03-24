@@ -9,11 +9,11 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-lightblue" >
+<nav class="navbar navbar-expand-lg navbar-grey" >
     <div class="container-fluid">
-        <a class="navbar-brand " href="index.html">
-            <img src="../images/logo_transparente.png" alt="" style="height: 80px; width: 80px;">
-        </a>        
+        <a class="navbar-brand" href="index.html">
+            <img src="../images/logo_transparente.png" alt="Logo" class="logo-responsive">
+        </a>      
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -62,8 +62,7 @@
         <div class="col-md-6 text-md-start order-2 order-md-1 mt-4 mt-md-0">
             <h1 class="fw-bold text-blue">Cuidamos lo que más importa, siempre.</h1>
             <p class="fs-5 text-secondary text-blue">Seguros simples, rápidos y sin complicaciones</p>
-            <button type="button" class="btn btn-index">Cotizar</button>
-        </div>
+            <button type="button" class="btn btn-index btn-large">Cotizar</button>        </div>
         <!-- Imagen -->
         <div class="col-md-6 order-md-2 order-1">
             <img src="images/inicio2.jpg" class="img-fluid shadow-orange rounded-3 w-100 w-sm-75 w-xs-50" alt="Seguro digital">
@@ -73,12 +72,12 @@
     <br>
     <br>
 </section>
-<section class="text-center py-5 bg-light">
+<section class="text-center py-5 bg-gray">
     <div class="container">
         <h2 class="mb-4">Conocé nuestros seguros</h2>
         <hr>
         <br>
-        <div class="row justify-content-center">
+        <div class="row text-center">
             <div class="col-md-2 col-4">
                 <div class="seguro-item">
                     <a href="./pages/auto.html">
@@ -130,7 +129,6 @@
         </div>
     </div>
 </section>
-
 <footer class="bg-body-tertiary pt-4 mt-4">
     <div class="container">
         <div class="row d-flex justify-content-center text-center text-md-start">
@@ -156,12 +154,14 @@
             </div>
 
             <!-- Horarios -->
-            <div class="col-12 col-md-4">
-                <h5 class="fs-6">Horarios de Atención</h5>
-                <ul class="list-unstyled">
-                    <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
-                    <li class="fs-6"><i class="fas fa-clock"></i> Sábados y domingos: Cerrado</li>
-                </ul>
+            <div class="col-12 col-md-4 d-flex justify-content-end">
+                <div>
+                    <h5 class="fs-6">Horarios de Atención</h5>
+                    <ul class="list-unstyled">
+                        <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
+                        <li class="fs-6"><i class="fas fa-clock"></i> Sábados y domingos: Cerrado</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
@@ -179,9 +179,7 @@
     </a>
     
 </footer>
-<script>
-    window.location.href = "https://construyendo.netlify.app/";
-</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 

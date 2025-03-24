@@ -4,6 +4,8 @@
 
 .dropdown-menu {
     overflow: visible !important;
+    top: 0;
+    left: 50%;
 }
 
 
@@ -27,6 +29,9 @@
     border: none; /* Sin borde */
     padding: 10px 20px;
     border-radius: 5px; /* Bordes redondeados */
+    font-size: 1.5rem; /* Aumenta el tamaño del texto */
+    padding: 15px 30px; /* Aumenta el relleno interno del botón */
+    border-radius: 8px; /* Bordes redondeados */
     transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
 }
 
@@ -36,6 +41,12 @@
     color: #fff; /* Mantener el texto blanco */
 }
 
+.logo-responsive {
+    height: 120px; /* Tamaño predeterminado */
+    width: 120px; /* Tamaño predeterminado */
+}
+
+
 .navbar-nav .nav-item {
     margin-right: 30px;
 }
@@ -43,6 +54,34 @@
 .navbar-brand{
     padding: 20px;
     margin-right: 100px;
+}
+.navbar-grey {
+    background-color: #dcdada; /* Gris más oscuro */
+}
+
+.navbar-grey .nav-link {
+    color: #000; /* Color del texto */
+}
+
+.navbar-grey .nav-link:hover {
+    color: #555; /* Color del texto al pasar el cursor */
+}
+.navbar-nav .nav-link {
+    font-size: 1.25rem; /* Aumenta el tamaño de la fuente */
+    font-weight: bold; /* Hace el texto más llamativo */
+    color: #002E86; /* Cambia el color del texto a un azul llamativo */
+    text-transform: uppercase; /* Convierte el texto a mayúsculas */
+    transition: color 0.3s ease; /* Añade una transición suave al color */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #0056b3; /* Cambia el color al pasar el cursor */
+    text-decoration: underline; /* Añade un subrayado al pasar el cursor */
+}
+
+
+.bg-gray {
+    background-color: #dcdada; /* Gris medio */
 }
 
 .accordion{
@@ -279,15 +318,69 @@
     transform: scale(1.1); /* Efecto de agrandado al pasar el mouse */
 }
 
-
-@media (max-width: 576px) {  /* Ajustes para celulares */
-    .footer-logo {
-        width: 50px;
-        height: 45px;
-    }
+.seguro-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
+.seguro-item img {
+    width: 80px; /* Ajusta el tamaño de los círculos */
+    height: 80px;
+    object-fit: cover;
+    border: 3px solid #007bff; /* Borde opcional */
+}
+
+.seguro-item p {
+    margin-top: 8px; /* Ajuste para alinear el texto debajo */
+    font-size: 14px; /* Tamaño de fuente para móviles */
+}
+.responsive-image {
+    width: 100%; /* Por defecto, ocupa el ancho completo */
+    height: auto; /* Mantiene la proporción */
+    object-fit: cover; /* Recorta la imagen para ajustarse al contenedor */
+}
+
+/* Estilo por defecto */
+.responsive-heading {
+    font-size: 2rem; /* Tamaño normal */
+}
+
+.responsive-paragraph {
+    font-size: 1rem; /* Tamaño normal */
+}
+
+.seguro-item img {
+    width: 150px; /* Tamaño mayor en pantallas grandes */
+    height: 150px;
+}
+
+
+/* Estilos para pantallas pequeñas */
 @media (max-width: 768px) {
+    .responsive-heading {
+        font-size: 1.5rem; /* Reduce el tamaño del encabezado */
+    }
+
+    .responsive-paragraph {
+        font-size: 0.875rem; /* Reduce el tamaño del párrafo */
+    }
+
+    .logo-responsive {
+        height: 90px; /* Tamaño para dispositivos móviles */
+        width: 90px; /* Tamaño para dispositivos móviles */
+    } 
+
+    .responsive-image {
+        width: 300px; /* Reduce el tamaño de la imagen */
+        height: 300px; /* Hace que la imagen sea cuadrada */
+        object-fit: cover; /* Recorta la imagen para que sea cuadrada */
+        border-radius: 10px; /* Mantiene los bordes redondeados */
+    }
+    
+
     .dropdown-submenu .dropdown-menu {
         left: auto;
         right: 40%;
@@ -308,11 +401,34 @@
         flex-direction: column; /* Apila los elementos */
 
     }
-}
 
-
-@media (max-width: 768px) {
     .accordion {
-       padding:0px;
+        padding:0px;
+     }
+
+     .seguro-item img {
+        width: 100px; /* Tamaño mayor en pantallas grandes */
+        height: 100px;
     }
 }
+
+
+
+@media (max-width: 576px) {  /* Ajustes para celulares */
+    .footer-logo {
+        width: 50px;
+        height: 45px;
+    }
+    
+    .dropdown-submenu .dropdown-menu {
+        left: auto;
+        right: 40%;
+    }
+
+    .seguro-item img {
+        width: 100px; /* Tamaño mayor en pantallas grandes */
+        height: 100px;
+    }
+
+}
+
