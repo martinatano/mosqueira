@@ -1,188 +1,983 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <title>Aseguradora</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mosqueira & Asociados — Productores de Seguros</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:       #1a2a6e;
+      --navy-dark:  #111d4e;
+      --navy-deep:  #0c1438;
+      --navy-light: #2a3d8f;
+      --gold:       #e8b84b;
+      --gold-light: #f5d07a;
+      --white:      #ffffff;
+      --muted:      rgba(255,255,255,0.5);
+      --line:       rgba(255,255,255,0.1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy-deep);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    .navbar-custom {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 3rem;
+      background: rgba(10, 16, 45, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .navbar-custom .logo img {
+      height: 48px;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links-list {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+    }
+
+    .nav-links-list > li { position: relative; }
+
+    .nav-links-list a {
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-links-list a:hover { color: var(--white); }
+
+    /* Dropdown */
+    .nav-dropdown { position: relative; }
+
+    .nav-dropdown > a::after {
+      content: ' ▾';
+      font-size: 0.65rem;
+      opacity: 0.6;
+    }
+
+    .dropdown-panel {
+      display: none;
+      position: absolute;
+      top: calc(100% + 1rem);
+      left: 0;
+      background: var(--navy-dark);
+      border: 1px solid var(--line);
+      min-width: 180px;
+      z-index: 200;
+      padding: 0.5rem 0;
+    }
+
+    .nav-dropdown:hover .dropdown-panel { display: block; }
+
+    .dropdown-panel a {
+      display: block;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.76rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .dropdown-panel a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* Submenu */
+    .has-submenu { position: relative; }
+
+    .has-submenu > a::after {
+      content: ' ›';
+      font-size: 0.8rem;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      background: var(--navy-dark);
+      border: 1px solid var(--line);
+      min-width: 200px;
+      padding: 0.5rem 0;
+    }
+
+    .has-submenu:hover .submenu { display: block; }
+
+    .nav-cta-btn {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.65rem 1.6rem;
+      background: var(--gold);
+      color: var(--navy-deep);
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .nav-cta-btn:hover { background: var(--gold-light); color: var(--navy-deep); }
+
+    /* Mobile toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--white);
+      padding: 0.4rem 0.7rem;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 60%, var(--navy-light) 100%);
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -150px;
+      width: 650px; height: 650px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,184,75,0.1) 0%, transparent 70%);
+    }
+
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+      padding: 4rem 3rem 4rem 4rem;
+    }
+
+    .hero-left { animation: fadeUp 1s 0.2s ease both; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      background: rgba(232,184,75,0.1);
+      border: 1px solid rgba(232,184,75,0.25);
+      padding: 0.4rem 1rem;
+      border-radius: 2px;
+      width: fit-content;
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.8rem, 6.5vw, 7rem);
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      color: var(--white);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-h1 .accent { color: var(--gold); display: block; }
+
+    .hero-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 440px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.9rem 2rem;
+      background: var(--gold);
+      color: var(--navy-deep);
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .btn-gold:hover { background: var(--gold-light); color: var(--navy-deep); transform: translateY(-1px); }
+    .btn-gold svg { transition: transform 0.25s; }
+    .btn-gold:hover svg { transform: translateX(4px); }
+
+    .btn-outline-w {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.9rem 1.8rem;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+
+    .btn-outline-w:hover { border-color: var(--white); background: rgba(255,255,255,0.05); color: var(--white); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      flex-wrap: wrap;
+    }
+
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.6rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    /* Hero right cards */
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      animation: fadeUp 1s 0.4s ease both;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 1.3rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .hero-card:hover {
+      background: rgba(232,184,75,0.07);
+      border-color: rgba(232,184,75,0.3);
+      transform: translateX(6px);
+      color: var(--white);
+    }
+
+    .hero-card-icon {
+      width: 42px; height: 42px;
+      background: rgba(232,184,75,0.12);
+      border-radius: 2px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .hero-card-title {
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-card-sub { font-size: 0.73rem; color: var(--muted); }
+
+    .hero-card-arrow {
+      margin-left: auto;
+      color: var(--gold);
+      opacity: 0;
+      transition: opacity 0.25s;
+      flex-shrink: 0;
+    }
+
+    .hero-card:hover .hero-card-arrow { opacity: 1; }
+
+    /* ── STRIP ── */
+    .strip {
+      background: var(--gold);
+      padding: 1.1rem 3rem;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .strip-item {
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--navy-deep);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ── PRODUCTOS ── */
+    .productos-section {
+      padding: 7rem 4rem;
+      background: #0f1940;
+    }
+
+    .section-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+      letter-spacing: 0.04em;
+      color: var(--white);
+      line-height: 1;
+    }
+
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .prod-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2.2rem;
+      transition: all 0.35s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+      display: block;
+    }
+
+    .prod-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+
+    .prod-card:hover {
+      background: rgba(232,184,75,0.06);
+      border-color: rgba(232,184,75,0.2);
+      transform: translateY(-4px);
+      color: var(--white);
+    }
+
+    .prod-card:hover::before { transform: scaleX(1); }
+
+    .prod-icon {
+      width: 50px; height: 50px;
+      background: rgba(232,184,75,0.12);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.4rem;
+      transition: background 0.3s;
+    }
+
+    .prod-card:hover .prod-icon { background: rgba(232,184,75,0.2); }
+
+    .prod-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .prod-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .prod-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 1.3rem;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.3s ease;
+    }
+
+    .prod-card:hover .prod-link { opacity: 1; transform: translateY(0); }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 7rem 4rem;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(232,184,75,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section p {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 1rem auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    .footer-custom {
+      background: var(--navy-deep);
+      padding: 5rem 4rem 3rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 2rem;
+    }
+
+    .footer-logo img {
+      height: 56px;
+      filter: brightness(0) invert(1);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-logos-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      align-items: center;
+    }
+
+    .footer-logos-grid img {
+      height: 30px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+      opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+
+    .footer-logos-grid img:hover { opacity: 0.9; }
+
+    .footer-col h4 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col li {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+      line-height: 1.55;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-copy { font-size: 0.74rem; color: rgba(255,255,255,0.25); }
+
+    .footer-legal a {
+      font-size: 0.74rem;
+      color: rgba(255,255,255,0.25);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      transition: color 0.2s;
+    }
+
+    .footer-legal a:hover { color: var(--white); }
+
+    /* ── WA ── */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 54px; height: 54px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.4);
+      z-index: 200;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 32px rgba(37,211,102,0.55); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .nav-links-list, .nav-cta-btn { display: none; }
+      .nav-toggle { display: block; }
+
+      .nav-mobile-open .nav-links-list {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 70px; left: 0; right: 0;
+        background: var(--navy-dark);
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-content { grid-template-columns: 1fr; padding: 2rem 1.5rem; gap: 2rem; }
+      .hero-right { display: none; }
+      .hero-h1 { font-size: clamp(3rem, 12vw, 5rem); }
+
+      .strip { gap: 1.5rem; padding: 1rem 1.5rem; }
+      .productos-section { padding: 4rem 1.5rem; }
+      .productos-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      .cta-section { padding: 4rem 1.5rem; }
+      .footer-custom { padding: 4rem 1.5rem 2rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .navbar-custom { padding: 1rem 1.5rem; }
+    }
+
+    @media (max-width: 540px) {
+      .productos-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-grey" >
-    <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">
-            <img src="../images/logo_transparente.png" alt="Logo" class="logo-responsive">
-        </a>      
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/nosotros.html">Nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="pages/contacto.html">Contacto</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Productos
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="">Automotor</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="pages/auto.html">Auto</a></li>
-                                <li><a class="dropdown-item" href="pages/moto.html">Moto</a></li>
-                            </ul>
-                        </li>
-                        <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle" href="#">Riesgos varios</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="pages/casa.html">Casa</a></li>
-                                <li><a class="dropdown-item" href="pages/salud.html">Salud</a></li>
-                                <li><a class="dropdown-item" href="pages/accpersonales.html">Accidentes Personales</a></li>
-                                <li><a class="dropdown-item" href="pages/respcivil.html">Responsabilidad Civil</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+<!-- NAV -->
+<nav class="navbar-custom" id="navbar">
+  <a class="logo" href="index.html">
+    <img src="images/logo_transparente.png" alt="Mosqueira y Asociados">
+  </a>
+
+  <ul class="nav-links-list" id="navLinks">
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="pages/nosotros.html">Nosotros</a></li>
+    <li><a href="pages/contacto.html">Contacto</a></li>
+    <li class="nav-dropdown">
+      <a href="#">Productos</a>
+      <div class="dropdown-panel">
+        <div class="has-submenu">
+          <a href="#">Automotor</a>
+          <div class="submenu">
+            <a href="pages/auto.html">Auto</a>
+            <a href="pages/moto.html">Moto</a>
+          </div>
         </div>
-    </div>
+        <div class="has-submenu">
+          <a href="#">Riesgos Varios</a>
+          <div class="submenu">
+            <a href="pages/casa.html">Casa</a>
+            <a href="pages/salud.html">Salud</a>
+            <a href="pages/accpersonales.html">Accidentes Personales</a>
+            <a href="pages/respcivil.html">Responsabilidad Civil</a>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <button class="nav-toggle" id="navToggle">&#9776;</button>
+  <a class="nav-cta-btn" href="#" onclick="cotizarIndex('Hola! Quería información para cotizar un seguro.')">Cotizar ahora</a>
 </nav>
 
-<section class="container text-center mt-5">
-    <div class="row align-items-center">
-        <!-- Texto -->
-        <div class="col-md-6 text-md-start order-2 order-md-1 mt-4 mt-md-0">
-            <h1 class="fw-bold text-blue">Cuidamos lo que más importa, siempre.</h1>
-            <p class="fs-5 text-secondary text-blue">Seguros simples, rápidos y sin complicaciones</p>
-            <button type="button" class="btn btn-index btn-large" onclick="cotizarIndex('Hola! Queria informacion para cotizar un seguro.')">Cotizar</button>        
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
+        Productores de Seguros · José C. Paz
+      </div>
+      <h1 class="hero-h1">
+        Cuidamos
+        <span class="accent">lo que más</span>
+        importa.
+      </h1>
+      <p class="hero-sub">Seguros simples, rápidos y sin complicaciones. Encontrá la cobertura ideal para vos y tu familia con asesoramiento personalizado.</p>
+      <div class="hero-actions">
+        <a class="btn-gold" href="#" onclick="cotizarIndex('Hola! Quería información para cotizar un seguro.')">
+          Cotizar ahora
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a class="btn-outline-w" href="#productos">Ver coberturas</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Años de experiencia</div>
         </div>
-        <!-- Imagen -->
-        <div class="col-md-6 order-md-2 order-1">
-            <img src="images/inicio2.jpg" class="img-fluid shadow-orange rounded-3 w-100 w-sm-75 w-xs-50" loading="lazy" alt="Seguro digital">
-        </div>        
+        <div>
+          <div class="stat-num">5</div>
+          <div class="stat-label">Aseguradoras aliadas</div>
+        </div>
+        <div>
+          <div class="stat-num">6</div>
+          <div class="stat-label">Tipos de cobertura</div>
+        </div>
+      </div>
     </div>
-    
-    <br>
-    <br>
+
+    <div class="hero-right">
+      <a class="hero-card" href="pages/auto.html">
+        <div class="hero-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+            <rect x="2" y="9" width="20" height="11" rx="2"/>
+            <path d="M6 9V7a6 6 0 0112 0v2"/>
+            <circle cx="8" cy="14.5" r="1.5"/><circle cx="16" cy="14.5" r="1.5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Seguro de Auto</div>
+          <div class="hero-card-sub">Cobertura total para tu vehículo</div>
+        </div>
+        <div class="hero-card-arrow">→</div>
+      </a>
+      <a class="hero-card" href="pages/casa.html">
+        <div class="hero-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9,22 9,12 15,12 15,22"/>
+          </svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Seguro de Casa</div>
+          <div class="hero-card-sub">Tu hogar siempre protegido</div>
+        </div>
+        <div class="hero-card-arrow">→</div>
+      </a>
+      <a class="hero-card" href="pages/salud.html">
+        <div class="hero-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Salud & Accidentes</div>
+          <div class="hero-card-sub">Cobertura médica para tu familia</div>
+        </div>
+        <div class="hero-card-arrow">→</div>
+      </a>
+      <a class="hero-card" href="pages/respcivil.html">
+        <div class="hero-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="hero-card-title">Responsabilidad Civil</div>
+          <div class="hero-card-sub">Cubrimos daños a terceros</div>
+        </div>
+        <div class="hero-card-arrow">→</div>
+      </a>
+    </div>
+  </div>
 </section>
-<section class="text-center py-5 bg-gray">
-    <div class="container">
-        <h2 class="mb-4">Conocé nuestros seguros</h2>
-        <hr>
-        <br>
-        <div class="row text-center">
-            <div class="col-md-2 col-4">
-                <div class="seguro-item">
-                    <a href="./pages/auto.html">
-                    <img src="images/auto2.jpg.avif"  alt="Seguro de Auto"   class="img-fluid rounded-circle seguro-hover">
-                </a>
-                    <p class="mt-2">Auto</p>
-                </div>
-            </div>
-            <div class="col-md-2 col-4">
-                <div class="seguro-item">
-                    <a href="./pages/moto.html">
-                    <img src="images/moto.jpg.avif" alt="Seguro de Moto"   class="img-fluid rounded-circle seguro-hover">
-                    </a>
-                    <p class="mt-2">Moto</p>
-                </div>
-            </div>
-            <div class="col-md-2 col-4">
-                <div class="seguro-item">
-                    <a href="./pages/casa.html">
-                    <img src="images/hogar.jpg"   alt="Seguro de Casa" class="img-fluid rounded-circle seguro-hover">
-                </a>                  
-                    <p class="mt-3">Casa</p>
-                </div>
-            </div>
-            <div class="col-md-2 col-4">
-                <div class="seguro-item">
-                    <a href="./pages/salud.html">
-                    <img src="images/vida.jpg" alt="Seguro de Salud"   class="img-fluid rounded-circle seguro-hover">
-                    </a>
-                    <p class="mt-2">Salud</p>
-                </div>
-            </div>
-            <div class="col-md-2 col-4">
-                <div class="seguro-item">
-                    <a href="./pages/accpersonales.html">
-                    <img src="./images/accper.jpg" alt="Seguro de Viajes"   class="img-fluid rounded-circle seguro-hover">
-                    </a>
-                    <p class="mt-2">Accidentes Personales</p>
-                </div>
-            </div>
-            <div class="col-md-2 col-4">
-                <div class="seguro-item">
-                    <a href="./pages/respcivil.html">
-                        <img src="./images/respcivil.jpg" alt="Resp Civil" class="img-fluid rounded-circle seguro-hover">
-                    </a>
-                    <p class="mt-2">Responsabilidad Civil</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<footer class="bg-body-tertiary pt-4 mt-4">
-    <div class="container">
-        <div class="row d-flex justify-content-center text-center text-md-start">
-            <!-- Contacto -->
-            <div class="col-12 col-md-4 mb-3 mb-md-0">
-                <h5 class="fs-6">Contacto</h5>
-                <ul class="list-unstyled">
-                    <li class="fs-6"><i class="fas fa-map-marker-alt"></i> Hipólito Yrigoyen 2524, José C. Paz</li>
-                    <li class="fs-6"><i class="fas fa-phone"></i> +54 1138523400</li>
-                    <li class="fs-6"><i class="fas fa-envelope"></i> mosqueiraseguros@gmail.com</li>
-                </ul>
-            </div>
 
-            <!-- Logos -->
-            <div class="col-12 col-md-4 d-flex justify-content-center align-items-center mb-3 mb-md-0">
-                <div class="d-flex flex-wrap justify-content-center gap-2">
-                    <img src="images/digna-logo-naranja-1.png" alt="" class="footer-logo">
-                    <img src="images/images-removebg-preview.png" alt="" class="footer-logo">
-                    <img src="images/librava-removebg-preview.png" alt="" class="footer-logo">
-                    <img src="images/provinicia_seguros-removebg-preview.png" alt="" class="footer-logo">
-                    <img src="images/unnamed.png" alt="" class="footer-logo">
-                </div>
-            </div>
+<!-- STRIP -->
+<div class="strip reveal">
+  <div class="strip-item">✓ Asesoramiento sin costo</div>
+  <div class="strip-item">✓ Gestión de siniestros</div>
+  <div class="strip-item">✓ Múltiples compañías</div>
+  <div class="strip-item">✓ Atención por WhatsApp</div>
+</div>
 
-            <!-- Horarios -->
-            <div class="col-12 col-md-4 d-flex justify-content-end">
-                <div>
-                    <h5 class="fs-6">Horarios de Atención</h5>
-                    <ul class="list-unstyled">
-                        <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
-                        <li class="fs-6"><i class="fas fa-clock"></i> Sábados y domingos: Cerrado</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+<!-- PRODUCTOS -->
+<section class="productos-section" id="productos">
+  <div class="reveal">
+    <div class="section-eyebrow">Nuestras coberturas</div>
+    <div class="section-title">Todo lo que necesitás asegurar</div>
+  </div>
 
-        <div class="row mt-3">
-            <div class="col text-center">
-                <p class="fs-6">&copy; 2025 Aseguradora. Todos los derechos reservados. 
-                    <a href="politica-privacidad.html">Política de Privacidad</a> | 
-                    <a href="terminos.html">Términos y Condiciones</a>
-                </p>
-            </div>
-        </div>
-    </div>
-    <a href="https://wa.me/541138523400" class="whatsapp-float" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="60">
+  <div class="productos-grid reveal">
+    <a class="prod-card" href="pages/auto.html">
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+          <rect x="2" y="9" width="20" height="11" rx="2"/>
+          <path d="M6 9V7a6 6 0 0112 0v2"/>
+          <circle cx="8" cy="14.5" r="1.5"/><circle cx="16" cy="14.5" r="1.5"/>
+        </svg>
+      </div>
+      <h3>Auto</h3>
+      <p>Protección completa para tu vehículo, desde responsabilidad civil hasta cobertura total.</p>
+      <div class="prod-link">Ver más →</div>
     </a>
-    
+    <a class="prod-card" href="pages/moto.html">
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+          <circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/>
+          <path d="M15 6h-3l-2 6H6l-2 5.5M15 6l3 5.5H12"/>
+        </svg>
+      </div>
+      <h3>Moto</h3>
+      <p>Cobertura flexible para tu moto, adaptada a tu uso diario y al tipo de vehículo.</p>
+      <div class="prod-link">Ver más →</div>
+    </a>
+    <a class="prod-card" href="pages/casa.html">
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+          <polyline points="9,22 9,12 15,12 15,22"/>
+        </svg>
+      </div>
+      <h3>Casa</h3>
+      <p>Tu hogar y todo lo que hay en él, protegidos ante incendios, robos y daños.</p>
+      <div class="prod-link">Ver más →</div>
+    </a>
+    <a class="prod-card" href="pages/salud.html">
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+        </svg>
+      </div>
+      <h3>Salud</h3>
+      <p>Atención médica garantizada para vos y tu familia, sin sorpresas ni letra chica.</p>
+      <div class="prod-link">Ver más →</div>
+    </a>
+    <a class="prod-card" href="pages/accpersonales.html">
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+          <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+        </svg>
+      </div>
+      <h3>Accidentes Personales</h3>
+      <p>Cobertura ante imprevistos que afecten tu integridad o capacidad laboral.</p>
+      <div class="prod-link">Ver más →</div>
+    </a>
+    <a class="prod-card" href="pages/respcivil.html">
+      <div class="prod-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#e8b84b" stroke-width="1.5">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <h3>Responsabilidad Civil</h3>
+      <p>Cubrimos daños a terceros generados por tu actividad, vehículo o propiedad.</p>
+      <div class="prod-link">Ver más →</div>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <div class="section-eyebrow">Empezá hoy</div>
+  <div class="section-title">¿Querés cotizar tu seguro?</div>
+  <p>Contactanos por WhatsApp y en minutos te asesoramos sin compromiso. Lunes a viernes de 9 a 18 hs.</p>
+  <a class="btn-gold" href="#" onclick="cotizarIndex('Hola! Quería información para cotizar un seguro.')">
+    Escribinos ahora
+    <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer-custom reveal">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">
+        <img src="images/logo_transparente.png" alt="Mosqueira y Asociados">
+      </div>
+      <p class="footer-tagline">Productores de seguros con más de 10 años de experiencia en José C. Paz y zona norte del GBA.</p>
+      <div class="footer-logos-grid">
+        <img src="images/digna-logo-naranja-1.png" alt="Digna">
+        <img src="images/images-removebg-preview.png" alt="">
+        <img src="images/librava-removebg-preview.png" alt="Librava">
+        <img src="images/provinicia_seguros-removebg-preview.png" alt="Provincia Seguros">
+        <img src="images/unnamed.png" alt="">
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li>Hipólito Yrigoyen 2524<br>José C. Paz, Buenos Aires</li>
+        <li>+54 11 3852-3400</li>
+        <li>mosqueiraseguros@gmail.com</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Horarios</h4>
+      <ul>
+        <li>Lunes a Viernes<br>9:00 – 18:00 hs</li>
+        <li style="opacity:0.35; margin-top:0.6rem;">Sábados y domingos: Cerrado</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Mosqueira & Asociados. Todos los derechos reservados.</p>
+    <div class="footer-legal">
+      <a href="politica-privacidad.html">Política de Privacidad</a>
+      <a href="terminos.html">Términos y Condiciones</a>
+    </div>
+  </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="script.js"></script>
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/541138523400" class="whatsapp-float" target="_blank">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const navbar = document.getElementById('navbar');
+  toggle.addEventListener('click', () => navbar.classList.toggle('nav-mobile-open'));
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => obs.observe(el));
+
+  // WhatsApp functions (igual que el original)
+  function cotizarSeguro(tipoSeguro) {
+    let telefono = "5491138523400";
+    let mensaje = `Hola! Quería contratar el seguro ${tipoSeguro} `;
+    let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, '_blank');
+  }
+
+  function cotizarIndex(mensaje) {
+    let telefono = "5491138523400";
+    let mensajei = ` ${mensaje} `;
+    let url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensajei)}`;
+    window.open(url, '_blank');
+  }
+</script>
 </body>
 </html>
