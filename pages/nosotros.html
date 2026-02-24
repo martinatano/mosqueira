@@ -105,6 +105,13 @@
       .navbar-custom{padding:1rem 1.5rem;}
       .contact-row{flex-direction:column;}
     }
+  
+    .page-hero{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+    .page-hero-img{position:relative;z-index:2;overflow:hidden;height:380px;}
+    .page-hero-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(15%);transition:transform 0.6s ease;}
+    .page-hero-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(232,184,75,0.12) 0%,transparent 60%);}
+    .page-hero-img:hover img{transform:scale(1.03);}
+    @media(max-width:900px){.page-hero{grid-template-columns:1fr;}.page-hero-img{height:220px;}}
   </style>
 </head>
 <body>
@@ -137,6 +144,15 @@
 </section>
 
 <section class="page-content">
+
+<div class="reveal" style="margin-bottom:3rem;overflow:hidden;height:300px;position:relative;">
+  <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80" alt="Nuestro equipo" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%);display:block;">
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,20,56,0.7) 0%,transparent 60%);"></div>
+  <div style="position:absolute;bottom:2rem;left:2.5rem;">
+    <div style="font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#e8b84b;margin-bottom:0.5rem;">Más de 10 años cuidando lo tuyo</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#fff;line-height:1;">Mosqueira & Asociados</div>
+  </div>
+</div>
   
 <div class="reveal" style="max-width:800px;">
   <div class="info-grid">
