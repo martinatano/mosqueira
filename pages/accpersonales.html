@@ -1,216 +1,211 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Aseguradora</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Accidentes Personales — Mosqueira & Asociados</title>
+<style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    :root{--navy:#1a2a6e;--navy-dark:#111d4e;--navy-deep:#0c1438;--navy-light:#2a3d8f;--navy-mid:#0f1940;--gold:#e8b84b;--gold-light:#f5d07a;--white:#ffffff;--muted:rgba(255,255,255,0.5);--line:rgba(255,255,255,0.1);}
+    html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--navy-deep);color:var(--white);overflow-x:hidden;}
+    .navbar-custom{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 3rem;background:rgba(10,16,45,0.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--line);}
+    .navbar-custom .logo img{height:46px;filter:brightness(0) invert(1);}
+    .nav-links-list{display:flex;gap:2rem;list-style:none;align-items:center;margin:0;}
+    .nav-links-list>li{position:relative;}
+    .nav-links-list a{font-size:0.78rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s;white-space:nowrap;}
+    .nav-links-list a:hover{color:var(--white);}
+    .nav-dropdown{position:relative;}
+    .nav-dropdown>a::after{content:' ▾';font-size:0.65rem;opacity:0.6;}
+    .dropdown-panel{display:none;position:absolute;top:calc(100% + 1rem);left:0;background:var(--navy-dark);border:1px solid var(--line);min-width:180px;z-index:200;padding:0.5rem 0;}
+    .nav-dropdown:hover .dropdown-panel{display:block;}
+    .dropdown-panel a{display:block;padding:0.6rem 1.2rem;font-size:0.76rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;}
+    .dropdown-panel a:hover{color:var(--white);background:rgba(255,255,255,0.04);}
+    .has-submenu{position:relative;}
+    .has-submenu>a::after{content:' ›';font-size:0.8rem;}
+    .submenu{display:none;position:absolute;top:0;left:100%;background:var(--navy-dark);border:1px solid var(--line);min-width:200px;padding:0.5rem 0;}
+    .has-submenu:hover .submenu{display:block;}
+    .nav-cta-btn{font-size:0.78rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.65rem 1.6rem;background:var(--gold);color:var(--navy-deep);border:none;cursor:pointer;transition:all 0.25s ease;text-decoration:none;white-space:nowrap;}
+    .nav-cta-btn:hover{background:var(--gold-light);color:var(--navy-deep);}
+    .nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--white);padding:0.4rem 0.7rem;cursor:pointer;font-size:1.2rem;}
+    .page-hero{padding:130px 4rem 5rem;background:linear-gradient(135deg,var(--navy-deep) 0%,var(--navy) 100%);position:relative;overflow:hidden;}
+    .page-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(232,184,75,0.08) 0%,transparent 70%);}
+    .page-hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:60px 60px;}
+    .page-hero-inner{position:relative;z-index:2;max-width:700px;}
+    .page-eyebrow{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.7rem;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;background:rgba(232,184,75,0.1);border:1px solid rgba(232,184,75,0.2);padding:0.35rem 0.9rem;border-radius:2px;width:fit-content;}
+    .page-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,6rem);line-height:0.95;letter-spacing:0.02em;color:var(--white);margin-bottom:1.2rem;}
+    .page-subtitle{font-size:1rem;font-weight:300;color:var(--muted);line-height:1.7;max-width:500px;}
+    .page-content{padding:5rem 4rem;background:#0f1940;}
+    .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
+    .plan-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:2.2rem;position:relative;transition:all 0.35s ease;display:flex;flex-direction:column;}
+    .plan-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 0.35s ease;}
+    .plan-card:hover{background:rgba(232,184,75,0.06);border-color:rgba(232,184,75,0.2);transform:translateY(-4px);}
+    .plan-card:hover::before,.plan-card.featured::before{transform:scaleX(1);}
+    .plan-card.featured{border-color:rgba(232,184,75,0.35);background:rgba(232,184,75,0.05);}
+    .badge-featured{position:absolute;top:-1px;right:1.5rem;background:var(--gold);color:var(--navy-deep);font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:0.3rem 0.8rem;}
+    .plan-title{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.05em;color:var(--white);margin-bottom:1.2rem;}
+    .plan-list{list-style:none;flex:1;margin-bottom:2rem;}
+    .plan-list li{font-size:0.85rem;color:var(--muted);padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:0.6rem;align-items:flex-start;line-height:1.5;}
+    .plan-list li::before{content:'✓';color:var(--gold);font-size:0.75rem;margin-top:0.1rem;flex-shrink:0;}
+    .btn-gold{display:inline-flex;align-items:center;justify-content:center;gap:0.6rem;font-size:0.82rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:0.9rem 2rem;background:var(--gold);color:var(--navy-deep);border:none;cursor:pointer;transition:all 0.25s ease;width:100%;}
+    .btn-gold:hover{background:var(--gold-light);color:var(--navy-deep);}
+    .acc-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);overflow:hidden;transition:border-color 0.2s;margin-bottom:0.6rem;}
+    .acc-item.open{border-color:rgba(232,184,75,0.3);}
+    .acc-trigger{width:100%;display:flex;justify-content:space-between;align-items:center;padding:1.3rem 1.8rem;background:none;border:none;color:var(--white);font-size:0.92rem;font-weight:500;text-align:left;cursor:pointer;font-family:'Inter',sans-serif;}
+    .acc-trigger:hover{color:var(--gold);}
+    .acc-icon{font-size:1.2rem;color:var(--gold);transition:transform 0.3s ease;flex-shrink:0;}
+    .acc-item.open .acc-icon{transform:rotate(45deg);}
+    .acc-body{display:none;padding:0 1.8rem 1.5rem;}
+    .acc-item.open .acc-body{display:block;}
+    .acc-body li,.acc-body p{font-size:0.85rem;color:var(--muted);line-height:1.7;margin-bottom:0.4rem;list-style:none;padding-left:1rem;position:relative;}
+    .acc-body li::before{content:'—';position:absolute;left:0;color:var(--gold);opacity:0.5;}
+    .single-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);padding:2.5rem;max-width:600px;}
+    .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-bottom:2rem;}
+    .info-item{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:1.5rem;}
+    .info-item-label{font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.5rem;}
+    .info-item-val{font-size:0.88rem;color:var(--muted);line-height:1.6;}
+    .contact-block{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:2.5rem;margin-top:3rem;}
+    .contact-block h3{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:0.05em;margin-bottom:1.5rem;}
+    .contact-row{display:flex;gap:1rem;flex-wrap:wrap;}
+    .contact-item{flex:1;min-width:180px;background:rgba(255,255,255,0.03);padding:1.2rem 1.5rem;}
+    .contact-label{font-size:0.68rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:0.4rem;}
+    .contact-val{font-size:0.85rem;color:var(--muted);}
+    .map-wrap{margin-top:2rem;}
+    .map-wrap iframe{width:100%;height:320px;border:0;filter:grayscale(30%) contrast(1.1);}
+    .nosotros-logos{display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;margin-top:2rem;}
+    .nosotros-logos img{height:40px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.5;transition:opacity 0.2s;}
+    .nosotros-logos img:hover{opacity:0.9;}
+    .footer-custom{background:var(--navy-deep);padding:5rem 4rem 3rem;border-top:1px solid var(--line);}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;padding-bottom:3rem;border-bottom:1px solid var(--line);margin-bottom:2rem;}
+    .footer-logo img{height:54px;filter:brightness(0) invert(1);margin-bottom:1.2rem;}
+    .footer-tagline{font-size:0.82rem;color:var(--muted);line-height:1.7;max-width:280px;}
+    .footer-logos-grid{display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:1.5rem;align-items:center;}
+    .footer-logos-grid img{height:28px;object-fit:contain;filter:brightness(0) invert(1);opacity:0.45;transition:opacity 0.2s;}
+    .footer-logos-grid img:hover{opacity:0.85;}
+    .footer-col h4{font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;}
+    .footer-col ul{list-style:none;}
+    .footer-col li{font-size:0.82rem;color:var(--muted);margin-bottom:0.6rem;line-height:1.55;}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .footer-copy{font-size:0.74rem;color:rgba(255,255,255,0.25);}
+    .footer-legal a{font-size:0.74rem;color:rgba(255,255,255,0.25);text-decoration:none;margin-left:1.5rem;transition:color 0.2s;}
+    .footer-legal a:hover{color:var(--white);}
+    .whatsapp-float{position:fixed;bottom:2rem;right:2rem;width:54px;height:54px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,0.4);z-index:200;transition:transform 0.2s,box-shadow 0.2s;text-decoration:none;}
+    .whatsapp-float:hover{transform:scale(1.1);box-shadow:0 6px 32px rgba(37,211,102,0.55);}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:900px){
+      .nav-links-list,.nav-cta-btn{display:none;}
+      .nav-toggle{display:block;}
+      .nav-mobile-open .nav-links-list{display:flex;flex-direction:column;position:fixed;top:70px;left:0;right:0;background:var(--navy-dark);padding:2rem;gap:1.5rem;border-bottom:1px solid var(--line);z-index:99;}
+      .page-hero{padding:110px 1.5rem 3rem;}
+      .page-content{padding:3rem 1.5rem;}
+      .footer-custom{padding:4rem 1.5rem 2rem;}
+      .footer-grid{grid-template-columns:1fr;gap:2rem;}
+      .navbar-custom{padding:1rem 1.5rem;}
+      .contact-row{flex-direction:column;}
+    }
+  </style>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-grey">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">
-                <img src="../images/logo_transparente.png" alt="Logo" class="logo-responsive">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../index.html">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../pages/nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../pages/contacto.html">Contacto</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Productos
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="">Automotor</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="../pages/auto.html">Auto</a></li>
-                                    <li><a class="dropdown-item" href="../pages/moto.html">Moto</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle" href="#">Riesgos varios</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="../pages/casa.html">Casa</a></li>
-                                    <li><a class="dropdown-item" href="../pages/salud.html">Salud</a></li>
-                                    <li><a class="dropdown-item" href="../pages/accpersonales.html">Accidentes
-                                            Personales</a></li>
-                                    <li><a class="dropdown-item" href="../pages/respcivil.html">Responsabilidad
-                                            Civil</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <div class="container my-4">
-        <div class="border-0 shadow-orange bg-light card  p-4 rounded">
-            <h3 class="titulo">Accidentes Personales</h3>
-            <div class="container-fluid custom-accordion">
-                <div class="accordion" id="accordionPanelsStayOpenExample ">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                <strong>Cómo es la cobertura?</strong>
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show">
-                            <div class="accordion-body">
-                                <li>Son asegurables las personas comprendidas entre los 14 y 65 años de edad.</li>
-                                <li>Con un seguro de accidentes personales, el asegurado estará cubierto ante los
-                                    riesgos
-                                    generados
-                                    a consecuencia de un accidente, en el lugar donde se encuentre.</li>
-                                <li>Las personas asegurables pueden contratar la cobertura de riesgos básicos y
-                                    adicionales.
-                                </li>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                <strong>Riesgos básicos</strong>
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse">
-                            <div class="accordion-body">
-                                <li>Muerte por accidente.</li>
-                                <li>Invalidez total o parcial por accidente.</li>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <strong>Límite de Permanencia en la póliza</strong>
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse">
-                            <div class="accordion-body">
-                                <li>Cualquier asegurado sea titular o cónyuge, podrá estar amparado por esta cobertura,
-                                    hasta el
-                                    momento de cumplir 65 años de edad.</li>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                <strong>Beneficiarios</strong>
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse">
-                            <div class="accordion-body">
-                                <li>En caso de fallecimiento, la indemnización será abonada a los beneficiarios
-                                    designados. De
-                                    no
-                                    existir estos o la designación sea ineficaz, a los herederos legales. </li>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                <strong>Tipos de contratación</strong>
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse">
-                            <div class="accordion-body">
-                                <li>Accidentes durante las 24hs, los 365 días del año.</li>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center">
-                    <button type="button" class="btn btn-custom"
-                        onclick="cotizarSeguro('Accidentes Personales.')">Cotizar</button>
-                </div>
-            </div>
-        </div>
+<nav class="navbar-custom" id="navbar">
+  <a class="logo" href="../index.html"><img src="../images/logo_transparente.png" alt="Mosqueira y Asociados"></a>
+  <ul class="nav-links-list" id="navLinks">
+    <li><a href="../index.html">Inicio</a></li>
+    <li><a href="nosotros.html">Nosotros</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
+    <li class="nav-dropdown">
+      <a href="#">Productos</a>
+      <div class="dropdown-panel">
+        <div class="has-submenu"><a href="#">Automotor</a><div class="submenu"><a href="auto.html">Auto</a><a href="moto.html">Moto</a></div></div>
+        <div class="has-submenu"><a href="#">Riesgos Varios</a><div class="submenu"><a href="casa.html">Casa</a><a href="salud.html">Salud</a><a href="accpersonales.html">Accidentes Personales</a><a href="respcivil.html">Responsabilidad Civil</a></div></div>
+      </div>
+    </li>
+  </ul>
+  <button class="nav-toggle" id="navToggle">&#9776;</button>
+  <a class="nav-cta-btn" href="#" onclick="cotizarIndex('Hola! Quería información para cotizar un seguro.')">Cotizar ahora</a>
+</nav>
+
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow">Riesgos Varios</div>
+    <h1 class="page-title">Accidentes<br>Personales</h1>
+    <p class="page-subtitle">Cobertura ante imprevistos que afecten tu integridad o capacidad laboral.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  
+<div class="reveal">
+  <div class="acc-item open">
+    <button class="acc-trigger">¿Cómo es la cobertura? <span class="acc-icon">+</span></button>
+    <div class="acc-body"><ul>
+      <li>Son asegurables las personas de 14 a 65 años.</li>
+      <li>Cobertura ante riesgos generados por un accidente, en cualquier lugar.</li>
+      <li>Podés contratar coberturas básicas y adicionales.</li>
+    </ul></div>
+  </div>
+  <div class="acc-item">
+    <button class="acc-trigger">Riesgos básicos <span class="acc-icon">+</span></button>
+    <div class="acc-body"><ul>
+      <li>Muerte por accidente.</li>
+      <li>Invalidez total o parcial por accidente.</li>
+    </ul></div>
+  </div>
+  <div class="acc-item">
+    <button class="acc-trigger">Límite de permanencia en la póliza <span class="acc-icon">+</span></button>
+    <div class="acc-body"><ul>
+      <li>El asegurado, sea titular o cónyuge, puede estar amparado hasta los 65 años.</li>
+    </ul></div>
+  </div>
+  <div class="acc-item">
+    <button class="acc-trigger">Beneficiarios <span class="acc-icon">+</span></button>
+    <div class="acc-body"><ul>
+      <li>En caso de fallecimiento, la indemnización se abona a los beneficiarios designados. A falta de estos, a los herederos legales.</li>
+    </ul></div>
+  </div>
+  <div class="acc-item">
+    <button class="acc-trigger">Tipos de contratación <span class="acc-icon">+</span></button>
+    <div class="acc-body"><ul>
+      <li>Accidentes durante las 24 hs, los 365 días del año.</li>
+    </ul></div>
+  </div>
+  <div style="margin-top:2rem;">
+    <button class="btn-gold" style="width:auto;padding:0.9rem 2.5rem;" onclick="cotizarSeguro('Accidentes Personales.')">Cotizar ahora</button>
+  </div>
+</div>
+</section>
+
+<footer class="footer-custom reveal">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo"><img src="../images/logo_transparente.png" alt="Mosqueira y Asociados"></div>
+      <p class="footer-tagline">Productores de seguros con más de 10 años de experiencia en José C. Paz.</p>
+      <div class="footer-logos-grid">
+        <img src="../images/digna-logo-naranja-1.png" alt=""><img src="../images/images-removebg-preview.png" alt=""><img src="../images/librava-removebg-preview.png" alt=""><img src="../images/provinicia_seguros-removebg-preview.png" alt=""><img src="../images/unnamed.png" alt="">
+      </div>
     </div>
+    <div class="footer-col"><h4>Contacto</h4><ul><li>Hipólito Yrigoyen 2524<br>José C. Paz, Buenos Aires</li><li>+54 11 3852-3400</li><li>mosqueiraseguros@gmail.com</li></ul></div>
+    <div class="footer-col"><h4>Horarios</h4><ul><li>Lunes a Viernes<br>9:00 – 18:00 hs</li><li style="opacity:0.35;margin-top:0.6rem;">Sábados y domingos: Cerrado</li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Mosqueira & Asociados. Todos los derechos reservados.</p>
+    <div class="footer-legal"><a href="../politica-privacidad.html">Política de Privacidad</a><a href="../terminos.html">Términos y Condiciones</a></div>
+  </div>
+</footer>
+<a href="https://wa.me/541138523400" class="whatsapp-float" target="_blank">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
-    <footer class="bg-body-tertiary pt-4 mt-4">
-        <div class="container">
-            <div class="row d-flex justify-content-between align-items-center">
-                <!-- Contacto -->
-                <div class="col-md-4">
-                    <div>
-                        <h5 class="fs-6">Contacto</h5>
-                        <ul class="list-unstyled">
-                            <li class="fs-6"><i class="fas fa-map-marker-alt"></i> Hipólito Yrigoyen 2524, José C.
-                                Paz
-                            </li>
-                            <li class="fs-6"><i class="fas fa-phone"></i> +54 1138523400</li>
-                            <li class="fs-6"><i class="fas fa-envelope"></i> mosqueiraseguros@gmail.com</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Logos -->
-                <div class="col-md-4 d-flex justify-content-center">
-                    <div>
-                        <img src="../images/digna-logo-naranja-1.png" alt=""
-                            style="width:55px; height: 50px; margin: 0 5px;">
-                        <img src="../images/images-removebg-preview.png" alt=""
-                            style="width:90px; height: 50px; margin: 0 5px;">
-                        <img src="../images/librava-removebg-preview.png" alt=""
-                            style="width:60px; height: 50px; margin: 0 5px;">
-                        <img src="../images/provinicia_seguros-removebg-preview.png" alt=""
-                            style="width:50px; height: 50px; margin: 0 5px;">
-                        <img src="../images/unnamed.png" alt="" style="width:90px; height: 50px; margin: 0 5px;">
-                    </div>
-                </div>
-
-                <!-- Horarios -->
-                <div class="col-md-4 d-flex justify-content-end">
-                    <div>
-                        <h5 class="fs-6">Horarios de Atención</h5>
-                        <ul class="list-unstyled">
-                            <li class="fs-6"><i class="fas fa-clock"></i> Lunes a Viernes: 9:00 - 18:00</li>
-                            <li class="fs-6"><i class="fas fa-clock"></i> Sábados y domingos: Cerrado</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col text-center">
-                    <p class="fs-6">&copy; 2025 Aseguradora. Todos los derechos reservados.
-                        <a href="politica-privacidad.html">Política de Privacidad</a> |
-                        <a href="terminos.html">Términos y Condiciones</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../script.js"></script>
-
+<script>
+  document.getElementById('navToggle').addEventListener('click',()=>document.getElementById('navbar').classList.toggle('nav-mobile-open'));
+  document.querySelectorAll('.reveal').forEach(el=>new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');}})},{threshold:0.1}).observe(el));
+  // Accordion
+  document.querySelectorAll('.acc-trigger').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.closest('.acc-item');item.classList.toggle('open');});});
+  function cotizarSeguro(t){window.open(`https://wa.me/5491138523400?text=${encodeURIComponent('Hola! Quería contratar el seguro '+t)}`,'_blank');}
+  function cotizarIndex(m){window.open(`https://wa.me/5491138523400?text=${encodeURIComponent(m)}`,'_blank');}
+</script>
 </body>
-
 </html>
